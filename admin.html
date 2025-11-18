@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin HOME GAME FIVE</title>
+<style>
+body { font-family: Arial; padding: 20px; background: #111; color: white; }
+input, textarea { width: 100%; margin-bottom: 10px; padding: 8px; border-radius: 5px; border: none; }
+button { padding: 10px 15px; background: #00aaff; color: black; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+.section { margin-bottom: 20px; padding: 15px; background: #222; border-radius: 10px; }
+</style>
+</head>
+<body>
+
+<h1>ADMIN – HOME GAME FIVE</h1>
+
+<!-- Login -->
+<label>Mot de passe :</label>
+<input type="password" id="password" placeholder="Entrez le mot de passe">
+<button onclick="login()">Se connecter</button>
+
+<!-- Admin Panel -->
+<div id="adminPanel" style="display:none;">
+
+    <h2>Modifier les Consoles</h2>
+
+    <!-- PlayStation -->
+    <div class="section">
+        <h3>PlayStation 5</h3>
+        <label>Nom :</label>
+        <input type="text" id="psName" value="PlayStation 5">
+        <label>Description :</label>
+        <input type="text" id="psDesc" value="Standard & Digital">
+        <label>Lien WhatsApp :</label>
+        <input type="text" id="psLink" value="https://wa.me/657060698">
+    </div>
+
+    <!-- Xbox -->
+    <div class="section">
+        <h3>Xbox Series</h3>
+        <label>Nom :</label>
+        <input type="text" id="xboxName" value="Xbox Series X/S">
+        <label>Description :</label>
+        <input type="text" id="xboxDesc" value="Next Gen Performance">
+        <label>Lien WhatsApp :</label>
+        <input type="text" id="xboxLink" value="https://wa.me/657060698">
+    </div>
+
+    <!-- Nintendo -->
+    <div class="section">
+        <h3>Nintendo Switch</h3>
+        <label>Nom :</label>
+        <input type="text" id="ninName" value="Nintendo Switch">
+        <label>Description :</label>
+        <input type="text" id="ninDesc" value="OLED • Lite • Classique">
+        <label>Lien WhatsApp :</label>
+        <input type="text" id="ninLink" value="https://wa.me/657060698">
+    </div>
+
+    <button onclick="saveChanges()">💾 Sauvegarder</button>
+    <p id="status"></p>
+</div>
+
+<script>
+
+// 🔐 Mot de passe admin
+const ADMIN_PASSWORD = "foguen05022@@3#";
+
+function login(){
+    const pw = document.getElementById('password').value;
+
+    if(pw === ADMIN_PASSWORD){
+        document.getElementById('adminPanel').style.display = 'block';
+        document.getElementById('password').style.display = 'none';
+    } else {
+        alert("Mot de passe incorrect !");
+    }
+}
+
+
+// 💾 Sauvegarde des changements dans le navigateur
+function saveChanges() {
+
+    const fields = [
+        "psName", "psDesc", "psLink",
+        "xboxName", "xboxDesc", "xboxLink",
+        "ninName", "ninDesc", "ninLink"
+    ];
+
+    fields.forEach(id => {
+        localStorage.setItem(id, document.getElementById(id).value);
+    });
+
+    document.getElementById("status").innerText = "✔️ Modifications sauvegardées (localStorage) !";
+    alert("Enregistré ! Pour publier en ligne : copie les changements dans index.html sur GitHub.");
+}
+
+
+// 📌 Charger les données déjà enregistrées
+window.onload = () => {
+    const fields = [
+        "psName", "psDesc", "psLink",
+        "xboxName", "xboxDesc", "xboxLink",
+        "ninName", "ninDesc", "ninLink"
+    ];
+
+    fields.forEach(id => {
+        const saved = localStorage.getItem(id);
+        if(saved) document.getElementById(id).value = saved;
+    });
+};
+
+</script>
+
+</body>
+</html>
