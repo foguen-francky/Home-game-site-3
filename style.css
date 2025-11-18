@@ -1,20 +1,55 @@
-.btn-contact {
-    display: inline-block;
-    background: #25D366; /* vert WhatsApp par défaut */
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
     color: white;
-    padding: 10px 20px;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.welcome, .contact, .admin-panel {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.btn, .btn-contact, button {
+    display: inline-block;
+    background: #ff3d00;
+    color: white;
+    padding: 12px 25px;
+    margin: 10px;
     border-radius: 10px;
-    font-size: 16px;
-    margin: 5px;
+    font-size: 18px;
     transition: 0.3s;
 }
 
-.btn-contact:hover {
-    background: #128C7E; /* couleur plus foncée au hover */
+.btn:hover, .btn-contact:hover, button:hover {
+    background: #ff5722;
+    cursor: pointer;
 }
-.btn-contact:first-child {
-    background: #0084FF; /* Messenger bleu */
+
+input[type=text], select {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    width: 250px;
+    font-size: 16px;
 }
-.btn-contact:first-child:hover {
-    background: #005BB5;
+
+form button {
+    border: none;
 }
