@@ -44,9 +44,23 @@
 
         .item-name {
             font-size: 20px;
+            flex-grow: 1;
         }
 
-        /* Styles boutons contact en bas */
+        .item button {
+            padding: 8px 15px;
+            border-radius: 8px;
+            border: none;
+            background-color: #ff3d00;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .item button:hover {
+            background-color: #ff5722;
+        }
+
         .contact {
             text-align: center;
             margin: 30px 0;
@@ -82,105 +96,138 @@
 </head>
 <body>
 
-    <h1>Nos Catégories de Consoles</h1>
+<h1>Nos Catégories de Consoles</h1>
 
-    <!-- PLAYSTATION -->
-    <div class="section">
-        <h2>🎮 PlayStation</h2>
-        <div class="item">
-            <img src="images/Ps5-slim.jpeg" alt="PS5 Slim">
-            <div class="item-name">PS5 Slim</div>
-        </div>
-        <div class="item">
-            <img src="images/Ps5-fat.jpeg" alt="PS5 Fat">
-            <div class="item-name">PS5 Fat</div>
-        </div>
-        <div class="item">
-            <img src="images/Ps4-simple.jpeg" alt="PS4 Simple">
-            <div class="item-name">PS4 Simple</div>
-        </div>
-        <div class="item">
-            <img src="images/Ps4-slim.jpeg" alt="PS4 Slim">
-            <div class="item-name">PS4 Slim</div>
-        </div>
-        <div class="item">
-            <img src="images/Ps4-fat.jpeg" alt="PS4 Fat">
-            <div class="item-name">PS4 Fat</div>
-        </div>
-        <div class="item">
-            <img src="images/Ps4-pro.jpeg" alt="PS4 Pro">
-            <div class="item-name">PS4 Pro</div>
-        </div>
+<!-- PLAYSTATION -->
+<div class="section">
+    <h2>🎮 PlayStation</h2>
+    <div class="item">
+        <img src="images/Ps5-slim.jpeg" alt="PS5 Slim">
+        <div class="item-name">PS5 Slim</div>
+        <button onclick="commander('PS5 Slim')">Commander</button>
     </div>
+    <div class="item">
+        <img src="images/Ps5-fat.jpeg" alt="PS5 Fat">
+        <div class="item-name">PS5 Fat</div>
+        <button onclick="commander('PS5 Fat')">Commander</button>
+    </div>
+    <div class="item">
+        <img src="images/Ps4-simple.jpeg" alt="PS4 Simple">
+        <div class="item-name">PS4 Simple</div>
+        <button onclick="commander('PS4 Simple')">Commander</button>
+    </div>
+    <div class="item">
+        <img src="images/Ps4-slim.jpeg" alt="PS4 Slim">
+        <div class="item-name">PS4 Slim</div>
+        <button onclick="commander('PS4 Slim')">Commander</button>
+    </div>
+    <div class="item">
+        <img src="images/Ps4-fat.jpeg" alt="PS4 Fat">
+        <div class="item-name">PS4 Fat</div>
+        <button onclick="commander('PS4 Fat')">Commander</button>
+    </div>
+    <div class="item">
+        <img src="images/Ps4-pro.jpeg" alt="PS4 Pro">
+        <div class="item-name">PS4 Pro</div>
+        <button onclick="commander('PS4 Pro')">Commander</button>
+    </div>
+</div>
 
-    <!-- XBOX -->
-    <div class="section">
-        <h2>🎮 Xbox</h2>
-        <div class="item">
-            <img src="images/Xbox-série-s.jpeg" alt="Xbox Série S">
-            <div class="item-name">Xbox Série S</div>
-        </div>
-        <div class="item">
-            <img src="images/Xbox-série-x.jpeg" alt="Xbox Série X">
-            <div class="item-name">Xbox Série X</div>
-        </div>
-        <div class="item">
-            <img src="images/Xbox-one-s.jpeg" alt="Xbox One S">
-            <div class="item-name">Xbox One S</div>
-        </div>
-        <div class="item">
-            <img src="images/Xbox-one-x.jpeg" alt="Xbox One X">
-            <div class="item-name">Xbox One X</div>
-        </div>
-        <div class="item">
-            <img src="images/Xbox-360.jpeg" alt="Xbox 360">
-            <div class="item-name">Xbox 360</div>
-        </div>
+<!-- XBOX -->
+<div class="section">
+    <h2>🎮 Xbox</h2>
+    <div class="item">
+        <img src="images/Xbox-série-s.jpeg" alt="Xbox Série S">
+        <div class="item-name">Xbox Série S</div>
+        <button onclick="commander('Xbox Série S')">Commander</button>
     </div>
+    <div class="item">
+        <img src="images/Xbox-série-x.jpeg" alt="Xbox Série X">
+        <div class="item-name">Xbox Série X</div>
+        <button onclick="commander('Xbox Série X')">Commander</button>
+    </div>
+    <div class="item">
+        <img src="images/Xbox-one-s.jpeg" alt="Xbox One S">
+        <div class="item-name">Xbox One S</div>
+        <button onclick="commander('Xbox One S')">Commander</button>
+    </div>
+    <div class="item">
+        <img src="images/Xbox-one-x.jpeg" alt="Xbox One X">
+        <div class="item-name">Xbox One X</div>
+        <button onclick="commander('Xbox One X')">Commander</button>
+    </div>
+    <div class="item">
+        <img src="images/Xbox-360.jpeg" alt="Xbox 360">
+        <div class="item-name">Xbox 360</div>
+        <button onclick="commander('Xbox 360')">Commander</button>
+    </div>
+</div>
 
-    <!-- NINTENDO -->
-    <div class="section">
-        <h2>🎮 Nintendo</h2>
-        <div class="item">
-            <img src="images/Nintendo-switch.jpeg" alt="Nintendo Switch">
-            <div class="item-name">Nintendo Switch</div>
-        </div>
+<!-- NINTENDO -->
+<div class="section">
+    <h2>🎮 Nintendo</h2>
+    <div class="item">
+        <img src="images/Nintendo-switch.jpeg" alt="Nintendo Switch">
+        <div class="item-name">Nintendo Switch</div>
+        <button onclick="commander('Nintendo Switch')">Commander</button>
     </div>
+</div>
 
-    <!-- MANETTES -->
-    <div class="section">
-        <h2>🕹️ Manettes</h2>
-        <div class="item">
-            <img src="images/Manette-ps5.jpeg" alt="Manette PS5">
-            <div class="item-name">Manette PS5</div>
-        </div>
-        <div class="item">
-            <img src="images/Manette-ps4.jpeg" alt="Manette PS4">
-            <div class="item-name">Manette PS4</div>
-        </div>
-        <div class="item">
-            <img src="images/Manette-xbox.jpeg" alt="Manette Xbox">
-            <div class="item-name">Manette Xbox</div>
-        </div>
-        <div class="item">
-            <img src="images/Manette-nintendo.jpeg" alt="Manette Nintendo">
-            <div class="item-name">Manette Nintendo</div>
-        </div>
-        <div class="item">
-            <img src="images/Manette-nintendo-2.jpeg" alt="Manette Nintendo 2">
-            <div class="item-name">Manette Nintendo 2</div>
-        </div>
-        <div class="item">
-            <img src="images/Manette-nintendo-3.jpeg" alt="Manette Nintendo 3">
-            <div class="item-name">Manette Nintendo 3</div>
-        </div>
+<!-- MANETTES -->
+<div class="section">
+    <h2>🕹️ Manettes</h2>
+    <div class="item">
+        <img src="images/Manette-ps5.jpeg" alt="Manette PS5">
+        <div class="item-name">Manette PS5</div>
+        <button onclick="commander('Manette PS5')">Commander</button>
     </div>
+    <div class="item">
+        <img src="images/Manette-ps4.jpeg" alt="Manette PS4">
+        <div class="item-name">Manette PS4</div>
+        <button onclick="commander('Manette PS4')">Commander</button>
+    </div>
+    <div class="item">
+        <img src="images/Manette-xbox.jpeg" alt="Manette Xbox">
+        <div class="item-name">Manette Xbox</div>
+        <button onclick="commander('Manette Xbox')">Commander</button>
+    </div>
+    <div class="item">
+        <img src="images/Manette-nintendo.jpeg" alt="Manette Nintendo">
+        <div class="item-name">Manette Nintendo</div>
+        <button onclick="commander('Manette Nintendo')">Commander</button>
+    </div>
+    <div class="item">
+        <img src="images/Manette-nintendo-2.jpeg" alt="Manette Nintendo 2">
+        <div class="item-name">Manette Nintendo 2</div>
+        <button onclick="commander('Manette Nintendo 2')">Commander</button>
+    </div>
+    <div class="item">
+        <img src="images/Manette-nintendo-3.jpeg" alt="Manette Nintendo 3">
+        <div class="item-name">Manette Nintendo 3</div>
+        <button onclick="commander('Manette Nintendo 3')">Commander</button>
+    </div>
+</div>
 
-    <!-- Boutons de contact en bas -->
-    <div class="contact">
-        <a href="https://m.me/HomeGameFive" target="_blank" class="messenger">Messenger</a>
-        <a href="https://wa.me/657060698" target="_blank" class="whatsapp">WhatsApp</a>
-    </div>
+<!-- Boutons de contact en bas -->
+<div class="contact">
+    <a href="https://m.me/HomeGameFive" target="_blank" class="messenger">Messenger</a>
+    <a href="https://wa.me/657060698" target="_blank" class="whatsapp">WhatsApp</a>
+</div>
+
+<script>
+function commander(produit) {
+    let paiement = prompt(`Vous commandez ${produit}.\nChoisissez le moyen de paiement : MTN ou Orange Money`);
+    if (!paiement) return alert('Commande annulée.');
+
+    let numero = prompt(`Entrez votre numéro pour ${paiement} :`);
+    if (!numero) return alert('Commande annulée.');
+
+    let code = prompt(`Entrez le code reçu pour valider le paiement :`);
+    if (!code) return alert('Commande annulée.');
+
+    alert(`Commande simulée !\nProduit: ${produit}\nPaiement: ${paiement}\nNuméro: ${numero}\nCode: ${code}\n\nMerci pour votre commande !`);
+}
+</script>
 
 </body>
 </html>
