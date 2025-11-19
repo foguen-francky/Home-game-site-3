@@ -88,6 +88,43 @@ h1 {
 .contact .whatsapp:hover { background: #128C7E; }
 .contact .messenger { background: #0084FF; }
 .contact .messenger:hover { background: #005BB5; }
+
+/* Popup de confirmation */
+#confirmOverlay {
+    display: none;
+    position: fixed;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 1000;
+}
+
+#confirmBox {
+    display: none;
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    background: #222;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    width: 300px;
+    z-index: 1001;
+}
+
+#confirmBox button {
+    padding: 8px 15px;
+    margin: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#confirmBox .yes { background: #25D366; color:white; }
+#confirmBox .no { background: #ff3d00; color:white; }
 </style>
 </head>
 <body>
@@ -101,17 +138,12 @@ h1 {
         <div class="item">
             <img src="images/Ps5-slim.jpeg" alt="PS5 Slim">
             <div class="item-name">PS5 Slim</div>
-            <button onclick="orderWhatsApp('PS5 Slim')">Commander</button>
+            <button onclick="confirmOrder('PS5 Slim')">Commander</button>
         </div>
         <div class="item">
             <img src="images/Ps5-fat.jpeg" alt="PS5 Fat">
             <div class="item-name">PS5 Fat</div>
-            <button onclick="orderWhatsApp('PS5 Fat')">Commander</button>
-        </div>
-        <div class="item">
-            <img src="images/Ps4-simple.jpeg" alt="PS4 Simple">
-            <div class="item-name">PS4 Simple</div>
-            <button onclick="orderWhatsApp('PS4 Simple')">Commander</button>
+            <button onclick="confirmOrder('PS5 Fat')">Commander</button>
         </div>
     </div>
 </div>
@@ -121,14 +153,9 @@ h1 {
     <h2 onclick="toggleSection(this)">🎮 Xbox</h2>
     <div class="section-content">
         <div class="item">
-            <img src="images/Xbox-série-s.jpeg" alt="Xbox Série S">
-            <div class="item-name">Xbox Série S</div>
-            <button onclick="orderWhatsApp('Xbox Série S')">Commander</button>
-        </div>
-        <div class="item">
             <img src="images/Xbox-one-x.jpeg" alt="Xbox One X">
             <div class="item-name">Xbox One X</div>
-            <button onclick="orderWhatsApp('Xbox One X')">Commander</button>
+            <button onclick="confirmOrder('Xbox One X')">Commander</button>
         </div>
     </div>
 </div>
@@ -140,7 +167,7 @@ h1 {
         <div class="item">
             <img src="images/Nintendo-switch.jpeg" alt="Nintendo Switch">
             <div class="item-name">Nintendo Switch</div>
-            <button onclick="orderWhatsApp('Nintendo Switch')">Commander</button>
+            <button onclick="confirmOrder('Nintendo Switch')">Commander</button>
         </div>
     </div>
 </div>
@@ -152,12 +179,7 @@ h1 {
         <div class="item">
             <img src="images/Manette-ps5.jpeg" alt="Manette PS5">
             <div class="item-name">Manette PS5</div>
-            <button onclick="orderWhatsApp('Manette PS5')">Commander</button>
-        </div>
-        <div class="item">
-            <img src="images/Manette-xbox.jpeg" alt="Manette Xbox">
-            <div class="item-name">Manette Xbox</div>
-            <button onclick="orderWhatsApp('Manette Xbox')">Commander</button>
+            <button onclick="confirmOrder('Manette PS5')">Commander</button>
         </div>
     </div>
 </div>
@@ -168,18 +190,43 @@ h1 {
     <a href="https://wa.me/657060698" target="_blank" class="whatsapp">WhatsApp</a>
 </div>
 
+<!-- Popup de confirmation -->
+<div id="confirmOverlay"></div>
+<div id="confirmBox">
+    <p id="confirmText"></p>
+    <button class="yes" onclick="orderWhatsApp()">Oui</button>
+    <button class="no" onclick="closeConfirm()">Non</button>
+</div>
+
 <script>
 function toggleSection(el) {
     const content = el.nextElementSibling;
     content.style.display = (content.style.display === "block") ? "none" : "block";
 }
 
-// Fonction qui ouvre WhatsApp avec le produit prérempli
-function orderWhatsApp(productName) {
+let currentProduct = '';
+
+// Affiche la popup de confirmation
+function confirmOrder(productName) {
+    currentProduct = productName;
+    document.getElementById('confirmText').innerText = `Voulez-vous vraiment commander : ${productName} ?`;
+    document.getElementById('confirmOverlay').style.display = 'block';
+    document.getElementById('confirmBox').style.display = 'block';
+}
+
+// Ferme la popup
+function closeConfirm() {
+    document.getElementById('confirmOverlay').style.display = 'none';
+    document.getElementById('confirmBox').style.display = 'none';
+}
+
+// Ouvre WhatsApp avec le produit
+function orderWhatsApp() {
     const phoneNumber = '657060698'; // ton numéro WhatsApp
-    const message = encodeURIComponent(`Bonjour, je souhaite commander : ${productName}`);
+    const message = encodeURIComponent(`Bonjour, je souhaite commander : ${currentProduct}`);
     const url = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(url, '_blank');
+    closeConfirm();
 }
 </script>
 
