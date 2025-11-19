@@ -1,42 +1,35 @@
-const chatMessages = document.getElementById('chatMessages');
-const chatInput = document.getElementById('chatInput');
-const sendBtn = document.getElementById('sendBtn');
+const chatInput = document.getElementById("chatInput");
+const sendBtn = document.getElementById("sendBtn");
+const chatMessages = document.getElementById("chatMessages");
 
-// Liste des mots-clés et réponses
-const responses = {
-    "bonjour": "Bonjour ! Bienvenue chez Home Game Five. Comment puis-je vous aider ?",
-    "ps5": "Nous avons PS5 Slim, PS5 Fat et PS5 Pro. Cliquez sur le bouton Commander sur la page consoles pour acheter.",
-    "xbox": "Nous avons Xbox One X, Xbox Series S et Xbox Series X.",
-    "nintendo": "Nous avons Nintendo Switch et différents modèles de manettes.",
-    "commande": "Pour commander, cliquez sur le bouton 'Commander' à côté du produit désiré.",
-    "aide": "Je peux vous donner des infos sur les consoles, manettes ou moyens de contact."
-};
-
-function addMessage(text, sender) {
-    const div = document.createElement('div');
-    div.className = `message ${sender}`;
-    div.innerText = text;
-    chatMessages.appendChild(div);
+// Fonction pour ajouter un message
+function addMessage(sender, text) {
+    const msgDiv = document.createElement("div");
+    msgDiv.className = "message " + sender;
+    msgDiv.textContent = text;
+    chatMessages.appendChild(msgDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-function handleUserInput() {
-    const userMessage = chatInput.value.trim();
-    if (!userMessage) return;
-    
-    addMessage(userMessage, 'user');
-
-    let reply = "Désolé, je n'ai pas compris. Tapez 'aide' pour plus d'infos.";
-    for (let key in responses) {
-        if (userMessage.toLowerCase().includes(key)) {
-            reply = responses[key];
-            break;
-        }
-    }
-
-    setTimeout(() => addMessage(reply, 'bot'), 500);
-    chatInput.value = '';
+// Réponse simple du bot
+function botResponse(message) {
+    let reply = "Je ne comprends pas votre question.";
+    if(message.toLowerCase().includes("ps5")) reply = "Oui, nous avons des PS5 en stock.";
+    if(message.toLowerCase().includes("xbox")) reply = "Oui, nous avons plusieurs modèles Xbox disponibles.";
+    if(message.toLowerCase().includes("nintendo")) reply = "Oui, nous avons la Nintendo Switch.";
+    addMessage("bot", reply);
 }
 
-sendBtn.addEventListener('click', handleUserInput);
-chatInput.addEventListener('keypress', e => { if (e.key === 'Enter') handleUserInput(); });
+// Clic sur le bouton envoyer
+sendBtn.addEventListener("click", () => {
+    const message = chatInput.value.trim();
+    if(!message) return;
+    addMessage("user", message);
+    chatInput.value = "";
+    setTimeout(() => botResponse(message), 500); // réponse simulée
+});
+
+// Envoi avec touche Enter
+chatInput.addEventListener("keypress", (e) => {
+    if(e.key === "Enter") sendBtn.click();
+});
