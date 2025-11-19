@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Home Game Five</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chat-bot/chatbot.css"> <!-- CSS du chat bot -->
     <style>
         .welcome {
             text-align: center;
@@ -65,8 +66,7 @@
         <p>🎮 Découvrez toutes nos consoles et accessoires !</p>
 
         <a href="consoles.html" class="btn">Clique ici pour accéder aux consoles</a><br>
-
-        <a href="installation.html" class="btn-service">Cliquez pour accéder au service d'installation</a><br>
+        <a href="installation.html" class="btn-service">Cliquez pour accéder au service d'installation de jeux</a><br>
         <a href="reparation.html" class="btn-service">Cliquez pour accéder au service de réparation</a>
     </div>
 
@@ -75,5 +75,14 @@
         <a href="https://m.me/HomeGameFive" target="_blank" class="btn-contact">Messenger</a>
         <a href="https://wa.me/657060698" target="_blank" class="btn-contact">WhatsApp</a>
     </div>
+
+    <!-- Chat Bot -->
+    <div id="chatBotContainer">
+      <div id="chatHeader">Assistance Home Game Five</div>
+      <div id="chatMessages"></div>
+      <input type="text" id="chatInput" placeholder="Écris ta question..." />
+      <button id="sendBtn">Envoyer</button>
+    </div>
+    <script src="chat-bot/chatbot.js"></script> <!-- JS du chat bot -->
 </body>
 </html>
