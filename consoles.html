@@ -88,38 +88,6 @@ h1 {
 .contact .whatsapp:hover { background: #128C7E; }
 .contact .messenger { background: #0084FF; }
 .contact .messenger:hover { background: #005BB5; }
-
-/* Fenêtre de commande */
-#orderModal {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #222;
-    padding: 20px;
-    border-radius: 15px;
-    z-index: 1000;
-    width: 300px;
-}
-
-#orderModal input, #orderModal select, #orderModal button {
-    width: 100%;
-    margin: 10px 0;
-    padding: 8px;
-    border-radius: 8px;
-    border: none;
-}
-
-#overlay {
-    display: none;
-    position: fixed;
-    top:0; left:0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    z-index: 900;
-}
 </style>
 </head>
 <body>
@@ -133,17 +101,17 @@ h1 {
         <div class="item">
             <img src="images/Ps5-slim.jpeg" alt="PS5 Slim">
             <div class="item-name">PS5 Slim</div>
-            <button onclick="openOrder('PS5 Slim')">Commander</button>
+            <button onclick="orderWhatsApp('PS5 Slim')">Commander</button>
         </div>
         <div class="item">
             <img src="images/Ps5-fat.jpeg" alt="PS5 Fat">
             <div class="item-name">PS5 Fat</div>
-            <button onclick="openOrder('PS5 Fat')">Commander</button>
+            <button onclick="orderWhatsApp('PS5 Fat')">Commander</button>
         </div>
         <div class="item">
             <img src="images/Ps4-simple.jpeg" alt="PS4 Simple">
             <div class="item-name">PS4 Simple</div>
-            <button onclick="openOrder('PS4 Simple')">Commander</button>
+            <button onclick="orderWhatsApp('PS4 Simple')">Commander</button>
         </div>
     </div>
 </div>
@@ -155,12 +123,12 @@ h1 {
         <div class="item">
             <img src="images/Xbox-série-s.jpeg" alt="Xbox Série S">
             <div class="item-name">Xbox Série S</div>
-            <button onclick="openOrder('Xbox Série S')">Commander</button>
+            <button onclick="orderWhatsApp('Xbox Série S')">Commander</button>
         </div>
         <div class="item">
             <img src="images/Xbox-one-x.jpeg" alt="Xbox One X">
             <div class="item-name">Xbox One X</div>
-            <button onclick="openOrder('Xbox One X')">Commander</button>
+            <button onclick="orderWhatsApp('Xbox One X')">Commander</button>
         </div>
     </div>
 </div>
@@ -172,7 +140,7 @@ h1 {
         <div class="item">
             <img src="images/Nintendo-switch.jpeg" alt="Nintendo Switch">
             <div class="item-name">Nintendo Switch</div>
-            <button onclick="openOrder('Nintendo Switch')">Commander</button>
+            <button onclick="orderWhatsApp('Nintendo Switch')">Commander</button>
         </div>
     </div>
 </div>
@@ -184,12 +152,12 @@ h1 {
         <div class="item">
             <img src="images/Manette-ps5.jpeg" alt="Manette PS5">
             <div class="item-name">Manette PS5</div>
-            <button onclick="openOrder('Manette PS5')">Commander</button>
+            <button onclick="orderWhatsApp('Manette PS5')">Commander</button>
         </div>
         <div class="item">
             <img src="images/Manette-xbox.jpeg" alt="Manette Xbox">
             <div class="item-name">Manette Xbox</div>
-            <button onclick="openOrder('Manette Xbox')">Commander</button>
+            <button onclick="orderWhatsApp('Manette Xbox')">Commander</button>
         </div>
     </div>
 </div>
@@ -200,56 +168,18 @@ h1 {
     <a href="https://wa.me/657060698" target="_blank" class="whatsapp">WhatsApp</a>
 </div>
 
-<!-- Fenêtre de commande -->
-<div id="overlay"></div>
-<div id="orderModal">
-    <h3 id="productTitle">Commander</h3>
-    <select id="paymentMethod">
-        <option value="">Choisir le moyen de paiement</option>
-        <option value="MTN Momo">MTN Momo</option>
-        <option value="Orange Money">Orange Money</option>
-    </select>
-    <input type="text" id="phoneNumber" placeholder="Entrez votre numéro">
-    <input type="text" id="paymentCode" placeholder="Entrez le code de paiement">
-    <button onclick="confirmOrder()">Valider</button>
-    <button onclick="closeOrder()" style="background:#555;">Annuler</button>
-</div>
-
 <script>
 function toggleSection(el) {
     const content = el.nextElementSibling;
     content.style.display = (content.style.display === "block") ? "none" : "block";
 }
 
-let currentProduct = '';
-
-function openOrder(product) {
-    currentProduct = product;
-    document.getElementById('productTitle').innerText = `Commander : ${product}`;
-    document.getElementById('overlay').style.display = 'block';
-    document.getElementById('orderModal').style.display = 'block';
-}
-
-function closeOrder() {
-    document.getElementById('overlay').style.display = 'none';
-    document.getElementById('orderModal').style.display = 'none';
-    document.getElementById('paymentMethod').value = '';
-    document.getElementById('phoneNumber').value = '';
-    document.getElementById('paymentCode').value = '';
-}
-
-function confirmOrder() {
-    const payment = document.getElementById('paymentMethod').value;
-    const phone = document.getElementById('phoneNumber').value;
-    const code = document.getElementById('paymentCode').value;
-
-    if (!payment || !phone || !code) {
-        alert('Veuillez remplir toutes les informations.');
-        return;
-    }
-
-    alert(`Commande simulée !\nProduit : ${currentProduct}\nPaiement : ${payment}\nNuméro : ${phone}\nCode : ${code}\nMerci pour votre commande !`);
-    closeOrder();
+// Fonction qui ouvre WhatsApp avec le produit prérempli
+function orderWhatsApp(productName) {
+    const phoneNumber = '657060698'; // ton numéro WhatsApp
+    const message = encodeURIComponent(`Bonjour, je souhaite commander : ${productName}`);
+    const url = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(url, '_blank');
 }
 </script>
 
