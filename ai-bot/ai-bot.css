@@ -1,0 +1,64 @@
+#aiBot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  height: 420px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial;
+}
+
+#aiHeader {
+  background: #2b59ff;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+}
+
+#aiMessages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.message {
+  margin: 6px 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  max-width: 80%;
+}
+
+.user {
+  background: #d0e2ff;
+  align-self: flex-end;
+}
+
+.bot {
+  background: #eeeeee;
+  align-self: flex-start;
+}
+
+#aiInputArea {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+#aiInput {
+  flex: 1;
+  padding: 10px;
+  border: none;
+}
+
+#aiSend {
+  width: 70px;
+  background: #2b59ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
