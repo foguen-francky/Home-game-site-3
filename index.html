@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>Home Game Five</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="ai-bot.css"> <!-- CSS du chat bot -->
+    <link rel="stylesheet" href="ai-bot/ai-bot.css"> <!-- CSS du chat bot -->
+
     <style>
         .welcome {
             text-align: center;
@@ -80,16 +81,15 @@
     <div id="myChatBot"></div>
 
     <!-- JS chatbot -->
-    <script src="ai-bot.js"></script>
+    <script src="ai-bot/ai-bot.js"></script>
     <script>
-        // Charge le HTML du chatbot et initialise
-        fetch('ai-bot.html')
+        // Charge le HTML du chatbot depuis le dossier ai-bot/
+        fetch('ai-bot/ai-bot.html')
           .then(response => response.text())
           .then(html => {
               document.getElementById('myChatBot').innerHTML = html;
 
-              // Ici, tu peux initialiser ton JS du chat si besoin
-              // Exemple basique :
+              // Initialisation basique du chat
               const chatContainer = document.getElementById('myChatBot');
               const chatMessages = chatContainer.querySelector('#chatMessages');
               const chatInput = chatContainer.querySelector('#chatInput');
@@ -105,7 +105,8 @@
                       chatMessages.scrollTop = chatMessages.scrollHeight;
                   }
               });
-          });
+          })
+          .catch(err => console.error("Erreur chargement chatbot :", err));
     </script>
 </body>
 </html>
